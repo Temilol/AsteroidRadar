@@ -80,13 +80,19 @@ fun bindRecyclerViewToDisplayAsteroidList(recyclerView: RecyclerView, data: List
 @BindingAdapter("imageUrl")
 fun setImageUrl(imageView: ImageView, imageObj: PictureOfDay?) {
     val context = imageView.context
-    if (imageObj == null) return
-    Picasso.with(imageView.context).load(imageObj.url).into(imageView)
-    imageView.contentDescription = String.format(
-        context.getString(
-            R.string.nasa_picture_of_day_content_description_format
-        ), imageObj.title
-    )
+    if (imageObj == null) {
+        Picasso.with(imageView.context).load(R.drawable.placeholder_picture_of_day).into(imageView)
+        imageView.contentDescription =
+            context.getString(R.string.nasa_picture_of_day_content_description_format)
+    } else {
+        Picasso.with(imageView.context).load(imageObj.url)
+            .error(R.drawable.placeholder_picture_of_day).into(imageView)
+        imageView.contentDescription = String.format(
+            context.getString(
+                R.string.nasa_picture_of_day_content_description_format
+            ), imageObj.title
+        )
+    }
 }
 
 @BindingAdapter("appLoading")
@@ -110,5 +116,20 @@ fun bindRecycleViewVisibility(recyclerView: RecyclerView, state: AsyncOperationS
     recyclerView.visibility = when (state) {
         AsyncOperationState.LOADING -> View.GONE
         else -> View.VISIBLE
+    }
+}
+
+@BindingAdapter("textViewDescription")
+fun bindTextViewDescription(textView: TextView, imageObj: PictureOfDay?) {
+    val context = textView.context
+    if (imageObj == null) {
+        textView.text =
+            context.getString(R.string.this_is_nasa_s_picture_of_day_showing_nothing_yet)
+    } else {
+        textView.text = String.format(
+            context.getString(
+                R.string.nasa_picture_of_day_content_description_format
+            ), imageObj.title
+        )
     }
 }

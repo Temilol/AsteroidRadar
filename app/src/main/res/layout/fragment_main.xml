@@ -31,7 +31,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:contentDescription="@string/image_of_the_day"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{viewModel.dailyImage}" />
 
@@ -43,10 +42,10 @@
                 android:background="#55010613"
                 android:contentDescription="@string/image_of_the_day"
                 android:padding="16dp"
-                android:text="@string/image_of_the_day"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:textViewDescription="@{viewModel.dailyImage}" />
         </FrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
