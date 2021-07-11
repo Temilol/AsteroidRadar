@@ -29,7 +29,7 @@ class MainViewModel(application: Application, context: Context) : AndroidViewMod
     init {
         viewModelScope.launch {
             if (isOnline(context)) {
-                _state.postValue(AsyncOperationState.PENDING)
+                _state.postValue(AsyncOperationState.LOADING)
                 try {
                     asteroidRepository.refreshAsteroidList()
                     dailyImageRepository.refreshDailyImage()

@@ -7,5 +7,5 @@ object Constants {
 }
 
 enum class AsyncOperationState {
-    PENDING, SUCCESS, FAILURE
+    LOADING, SUCCESS, FAILURE
 }

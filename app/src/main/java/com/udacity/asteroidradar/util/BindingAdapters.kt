@@ -92,7 +92,7 @@ fun setImageUrl(imageView: ImageView, imageObj: PictureOfDay?) {
 @BindingAdapter("appLoading")
 fun setLoadingVisibility(progressBar: ProgressBar, state: AsyncOperationState?) {
     progressBar.visibility = when (state) {
-        AsyncOperationState.PENDING -> View.VISIBLE
+        AsyncOperationState.LOADING -> View.VISIBLE
         else -> View.GONE
     }
 }
@@ -100,7 +100,7 @@ fun setLoadingVisibility(progressBar: ProgressBar, state: AsyncOperationState?) 
 @BindingAdapter("frameVisibility")
 fun bindFrameLayoutVisibility(frameLayout: FrameLayout, state: AsyncOperationState?) {
     frameLayout.visibility = when (state) {
-        AsyncOperationState.PENDING -> View.GONE
+        AsyncOperationState.LOADING -> View.GONE
         else -> View.VISIBLE
     }
 }
@@ -108,7 +108,7 @@ fun bindFrameLayoutVisibility(frameLayout: FrameLayout, state: AsyncOperationSta
 @BindingAdapter("recycleViewVisibility")
 fun bindRecycleViewVisibility(recyclerView: RecyclerView, state: AsyncOperationState?) {
     recyclerView.visibility = when (state) {
-        AsyncOperationState.PENDING -> View.GONE
+        AsyncOperationState.LOADING -> View.GONE
         else -> View.VISIBLE
     }
 }
